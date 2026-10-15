@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кава і Хліб — пекарня-кав'ярня: меню, зала, як дійти</title>
+<meta name="description" content="Демонстраційний шаблон пекарні-кав'ярні для портфоліо: власне обсмаження зерна, хліб на заквасці, меню, фото зали. Адреса та телефон — приклад заповнення.">
+<meta name="theme-color" content="#12100C">
+<script>(function(){try{var t=localStorage.getItem("khl-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"Кава і Хліб","description":"Демонстраційний шаблон пекарні-кав'ярні: власне обсмаження зерна, хліб на заквасці, сніданки до 12:00.","servesCuisine":["Кава","Пекарня","Сніданки"],"priceRange":"₴","telephone":"+0000000","address":{"@type":"PostalAddress","streetAddress":"Ваша адреса","addressLocality":"Ваше місто","addressCountry":"UA"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"08:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:00","closes":"20:00"}],"image":["img/zala.jpg","img/stoyka.jpg","img/khlib.jpg"]}
+</script>
+<style>
+  :root{
+    --ink:#12100C;
+    --ink-2:#1A1712;
+    --paper:#EDE4D3;
+    --paper-dim:#B9AE9B;
+    --muted:#8B8071;
+    --line:rgba(237,228,211,.15);
+    --line-strong:rgba(237,228,211,.32);
+    --accent:#D08A3E;
+    --olive:#8FA37B;
+    --display:"Fraunces","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --body:"Karla","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --gut:clamp(20px,4vw,64px);
+    /* captions sit on a dark scrim over the photo, so they stay light in both themes */
+    --on-photo:#EDE4D3;
+  }
+  :root[data-theme="light"]{
+    --ink:#EDE4D3;
+    --ink-2:#E2D7C2;
+    --paper:#17140E;
+    --paper-dim:#463E32;
+    --muted:#6E6353;
+    --line:rgba(23,20,14,.14);
+    --line-strong:rgba(23,20,14,.30);
+    --accent:#A5601C;
+    --olive:#516B47;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--ink);color:var(--paper);
+    font-family:var(--body);font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
+    transition:background-color .3s,color .3s;
+  }
+  @media (prefers-reduced-motion:reduce){body{transition:none}}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:500;line-height:1.06;letter-spacing:-.015em}
+  p{margin:0 0 1em}
+  ::selection{background:var(--accent);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--ink);padding:10px 16px;z-index:99}
+  .skip:focus{left:12px;top:12px}
+
+  .wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+
+  /* ---------- header ---------- */
+  header.top{
+    position:sticky;top:0;z-index:40;
+    background:color-mix(in srgb,var(--ink) 88%,transparent);
+    backdrop-filter:blur(10px) saturate(120%);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;align-items:center;gap:clamp(16px,3vw,48px);height:66px}
+  .mark{font-family:var(--display);font-size:19px;letter-spacing:.01em;text-decoration:none;white-space:nowrap;display:flex;align-items:baseline;gap:.4em}
+  .mark i{font-style:normal;color:var(--accent);font-size:14px}
+  nav.main{margin-left:auto;display:flex;gap:clamp(14px,2vw,30px);align-items:center}
+  .navlist{display:contents}
+  .burger{
+    display:none;background:none;border:1px solid var(--line-strong);color:var(--paper-dim);
+    font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;cursor:pointer;
+  }
+  .burger::after{content:" ▾";color:var(--accent)}
+  nav.main a{
+    text-decoration:none;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--paper-dim);padding:6px 0;border-bottom:1px solid transparent;
+  }
+  nav.main a:hover{color:var(--paper);border-bottom-color:var(--accent)}
+  .langs{display:flex;border:1px solid var(--line-strong);margin-left:8px}
+  .langs button{
+    background:none;border:0;color:var(--paper-dim);font:inherit;font-size:12px;letter-spacing:.1em;
+    padding:5px 10px;cursor:pointer;
+  }
+  .langs button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+  .themes button{display:grid;place-items:center;padding:4px 9px;color:var(--paper-dim)}
+  .themes button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+  .themes svg{width:14px;height:14px;display:block}
+  @media (max-width:860px){
+    .topbar{height:58px}
+    .burger{display:block}
+    .navlist{
+      display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;
+      background:var(--ink);border-bottom:1px solid var(--line-strong);padding:6px var(--gut) 16px;
+    }
+    .navlist[data-open="true"]{display:flex}
+    .navlist a{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+    .navlist a:last-child{border-bottom:0}
+    @media (max-width:520px){ .cta-phone{display:none} }
+    @media (max-width:430px){
+      .topbar{gap:10px}
+      nav.main{gap:8px}
+      .mark{font-size:17px}
+      .langs{margin-left:0}
+      .langs button{padding:5px 7px}
+      .themes button{padding:5px 7px}
+      .burger{padding:7px 8px;font-size:11px;letter-spacing:.06em}
+    }
+  }
+  .cta-phone{
+    color:var(--accent)!important;border-bottom-color:transparent!important;
+    font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
+  }
+
+  /* ---------- opening ---------- */
+  .open{display:grid;grid-template-columns:1.05fr .95fr;min-height:min(88vh,760px);border-bottom:1px solid var(--line)}
+  .open-copy{padding:clamp(28px,5vw,84px) clamp(20px,4vw,60px) 0 var(--gut);display:flex;flex-direction:column}
+  .kicker{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 clamp(20px,4vw,44px)}
+  .kicker b{color:var(--olive);font-weight:400}
+  h1.big{font-size:clamp(2.5rem,6.4vw,5.1rem);font-weight:400;max-width:15ch}
+  h1.big em{font-style:italic;color:var(--accent)}
+  .lede{margin-top:clamp(18px,2.4vw,30px);max-width:44ch;color:var(--paper-dim);font-size:clamp(16px,1.35vw,19px)}
+  .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(22px,3vw,38px)}
+  .btn{
+    display:inline-block;text-decoration:none;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:14px 26px;border:1px solid var(--paper);color:var(--paper);
+    transition:background .18s,color .18s;
+  }
+  .btn:hover{background:var(--paper);color:var(--ink)}
+  .btn.solid{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+  .btn.solid:hover{background:var(--paper);border-color:var(--paper)}
+  .facts{margin-top:auto;padding:clamp(24px,3vw,40px) 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:2px 24px}
+  .facts div{padding:9px 0}
+  .facts dt{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .facts dd{margin:2px 0 0;font-family:var(--display);font-size:19px}
+  .open-photo{position:relative;overflow:hidden;background:var(--ink-2)}
+  .open-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04)}
+  .open-photo figcaption{
+    position:absolute;left:0;bottom:0;right:0;padding:14px 18px;font-size:12px;letter-spacing:.08em;
+    color:var(--on-photo);background:linear-gradient(to top,rgba(18,16,12,.82),transparent);
+  }
+  @media (max-width:900px){
+    .open{grid-template-columns:1fr}
+    .open-photo{min-height:56vh;order:-1}
+    .open-copy{padding-top:30px}
+  }
+
+  /* ---------- ticker ---------- */
+  .ticker{overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink-2)}
+  .ticker-track{display:flex;width:max-content;animation:slide 42s linear infinite}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker span{
+    padding:13px 0;margin:0 26px;font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:var(--paper-dim);
+    white-space:nowrap;
+  }
+  .ticker span::after{content:"·";margin-left:52px;color:var(--accent)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- section chrome ---------- */
+  section{padding:clamp(56px,8vw,116px) 0;scroll-margin-top:78px}
+  .shead{display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px);border-bottom:1px solid var(--line-strong);padding-bottom:18px;margin-bottom:clamp(30px,4vw,56px)}
+  .shead .num{font-family:var(--display);font-size:14px;color:var(--accent);letter-spacing:.06em;padding-bottom:8px}
+  .shead h2{font-size:clamp(1.9rem,4.2vw,3.2rem);font-weight:400}
+  .shead p{margin:0 0 6px auto;max-width:34ch;font-size:14.5px;color:var(--muted);text-align:right}
+  @media (max-width:760px){.shead{flex-wrap:wrap}.shead p{margin-left:0;text-align:left;width:100%}}
+
+  /* ---------- board ---------- */
+  .board{border:1px solid var(--line-strong);background:var(--ink-2);padding:clamp(22px,3vw,40px)}
+  .board ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,56px)}
+  @media (max-width:700px){.board ul{grid-template-columns:1fr}}
+  .board li{padding:16px 0;border-bottom:1px dotted var(--line-strong);display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:10px}
+  .board li:last-child{border-bottom:0}
+  .board h3{font-size:20px;font-weight:500}
+  .board .why{grid-column:1/-1;font-size:14px;color:var(--muted);margin:2px 0 0}
+  .board .p{font-family:var(--display);font-size:19px;color:var(--accent);white-space:nowrap}
+  .board-note{margin-top:22px;font-size:13px;color:var(--muted);font-style:italic}
+
+  /* ---------- menu ---------- */
+  .menu-grid{display:grid;grid-template-columns:200px 1fr;gap:clamp(28px,5vw,72px)}
+  @media (max-width:860px){.menu-grid{grid-template-columns:1fr}}
+  .rail{align-self:start}
+  @media (min-width:861px){.rail{position:sticky;top:96px}}
+  .rail ul{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+  .rail a{
+    display:block;text-decoration:none;padding:9px 0 9px 16px;margin-left:-1px;border-left:1px solid transparent;
+    font-size:14px;letter-spacing:.05em;color:var(--muted);
+  }
+  .rail a:hover,.rail a[aria-current="true"]{color:var(--paper);border-left-color:var(--accent)}
+  @media (max-width:860px){
+    .rail ul{display:flex;flex-wrap:wrap;gap:8px;border:0}
+    .rail a{border:1px solid var(--line-strong);padding:7px 13px;margin:0}
+    .rail a:hover,.rail a[aria-current="true"]{border-color:var(--accent)}
+  }
+  .course{margin-bottom:clamp(38px,5vw,62px)}
+  .course:last-child{margin-bottom:0}
+  .course h3{font-size:15px;letter-spacing:.16em;text-transform:uppercase;font-family:var(--body);font-weight:700;color:var(--olive);margin-bottom:6px}
+  .course .sub{font-size:14px;color:var(--muted);margin-bottom:22px}
+  .dishes{list-style:none;margin:0;padding:0}
+  .dishes li{padding:13px 0;border-bottom:1px solid var(--line)}
+  .dishes li:last-child{border-bottom:0}
+  .row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .row .nm{font-family:var(--display);font-size:21px;font-weight:500;flex:0 1 auto}
+  .row .dot{flex:1 1 auto;border-bottom:1px dotted var(--line-strong);transform:translateY(-4px);min-width:16px;order:2}
+  .row .pr{font-family:var(--display);font-size:20px;color:var(--accent);white-space:nowrap;order:3}
+  .dishes .ds{font-size:14.5px;color:var(--muted);margin:3px 0 0;max-width:58ch}
+  .tag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);border:1px solid var(--line-strong);padding:2px 7px;margin-left:9px;vertical-align:middle;order:4}
+  @media (max-width:760px){
+    .row::after{content:"";order:5;flex-basis:100%;height:0}
+    .tag{order:6;margin-left:0}
+  }
+
+  /* ---------- gallery ---------- */
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.4vw,18px)}
+  .grid figure{margin:0;position:relative;overflow:hidden;background:var(--ink-2)}
+  .grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  @media (prefers-reduced-motion:reduce){.grid img{transition:none}}
+  .grid figure:hover img{transform:scale(1.035)}
+  .grid figcaption{
+    position:absolute;inset:auto 0 0 0;padding:22px 16px 13px;font-size:13.5px;line-height:1.45;
+    color:var(--on-photo);
+    background:linear-gradient(to top,rgba(18,16,12,.92),rgba(18,16,12,.45) 60%,transparent);
+    opacity:.86;transition:opacity .3s;
+  }
+  @media (prefers-reduced-motion:reduce){.grid figcaption{transition:none}}
+  .grid figure:hover figcaption,.grid figure:focus-within figcaption{opacity:1}
+  .g-a{grid-column:span 4;aspect-ratio:16/10}
+  .g-b{grid-column:span 2;aspect-ratio:4/5}
+  .g-c{grid-column:span 2;aspect-ratio:1/1}
+  .g-d{grid-column:span 4;aspect-ratio:16/10}
+  .g-e{grid-column:span 3;aspect-ratio:3/2}
+  .g-f{grid-column:span 3;aspect-ratio:3/2}
+  .g-g{grid-column:span 6;aspect-ratio:21/9}
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .g-a,.g-d,.g-e,.g-f,.g-g{grid-column:span 2}
+    .g-b,.g-c{grid-column:span 1}
+    .g-a,.g-d{aspect-ratio:4/3}.g-g{aspect-ratio:16/9}
+  }
+
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,80px)}
+  @media (max-width:860px){.about{grid-template-columns:1fr}}
+  .about .col p{max-width:60ch}
+  .about .col > p:first-child::first-letter{
+    font-family:var(--display);font-size:3.3em;line-height:.78;float:left;padding:.06em .12em 0 0;color:var(--accent);
+  }
+  blockquote{margin:0;padding:26px 0 0;border-top:1px solid var(--line-strong);font-family:var(--display);font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.34;font-style:italic}
+  blockquote footer{margin-top:14px;font-family:var(--body);font-style:normal;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .numbers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:clamp(28px,4vw,44px)}
+  .numbers div{background:var(--ink);padding:20px 18px}
+  .numbers b{display:block;font-family:var(--display);font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:400;color:var(--accent)}
+  .numbers span{font-size:13px;color:var(--muted);letter-spacing:.04em}
+
+  /* ---------- contacts ---------- */
+  .reach{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+  @media (max-width:860px){.reach{grid-template-columns:1fr}}
+  .reach dl{margin:0}
+  .reach dt{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:24px}
+  .reach dt:first-child{margin-top:0}
+  .reach dd{margin:5px 0 0;font-family:var(--display);font-size:clamp(1.15rem,2vw,1.55rem)}
+  .reach dd a{text-decoration:none;border-bottom:1px solid var(--line-strong)}
+  .reach dd a:hover{border-color:var(--accent);color:var(--accent)}
+  .hours{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .hours li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .hours li b{font-weight:400;color:var(--paper)}
+  .hours li span{font-family:var(--display);color:var(--paper-dim)}
+  .hours li.now{color:var(--accent)}
+  .hours li.now b,.hours li.now span{color:var(--accent)}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+  .status.on i{background:var(--olive);box-shadow:0 0 0 4px rgba(143,163,123,.18)}
+  .status.off i{background:#B4552F}
+  .tips{margin-top:26px;font-size:14.5px;color:var(--muted)}
+
+  /* ---------- footer ---------- */
+  footer.site{border-top:1px solid var(--line);background:var(--ink-2);padding:44px 0 34px}
+  .fgrid{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;justify-content:space-between}
+  .fmark{font-family:var(--display);font-size:clamp(2rem,7vw,4.4rem);line-height:.95;font-weight:400;letter-spacing:-.02em}
+  .fmark span{color:var(--accent)}
+  .fine{font-size:13px;color:var(--muted);max-width:46ch;text-align:right}
+  @media (max-width:700px){.fine{text-align:left}}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu" data-en="Skip to the menu">Перейти до меню</a>
+
+<header class="top">
+  <div class="wrap topbar">
+    <a class="mark" href="#top">Кава&nbsp;<i data-en="and">і</i>&nbsp;Хліб</a>
+    <nav class="main" aria-label="Основна навігація">
+      <button class="burger" type="button" aria-expanded="false" aria-controls="navlist" data-en="Sections">Розділи</button>
+      <div class="navlist" id="navlist">
+        <a href="#board" data-en="Today">Сьогодні</a>
+        <a href="#menu" data-en="Menu">Меню</a>
+        <a href="#room" data-en="The room">Зала</a>
+        <a href="#about" data-en="About">Про нас</a>
+        <a href="#reach" data-en="Find us">Як дійти</a>
+      </div>
+      <span class="cta-phone" data-en="+0 000 000">+0 000 000</span>
+      <span class="langs themes" role="group" aria-label="Тема">
+        <button type="button" data-theme-btn="light" aria-pressed="false" title="Світла тема">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="3.6"/><path d="M10 1.8v2.3M10 15.9v2.3M1.8 10h2.3M15.9 10h2.3M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M15.8 4.2l-1.6 1.6M5.8 14.2l-1.6 1.6"/></g></svg>
+        </button>
+        <button type="button" data-theme-btn="dark" aria-pressed="true" title="Темна тема">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.9 12.6A6.6 6.6 0 0 1 7.4 4.1 6.6 6.6 0 1 0 15.9 12.6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </button>
+      </span>
+      <span class="langs" role="group" aria-label="Мова">
+        <button type="button" data-lang="uk" aria-pressed="true">УК</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="open">
+  <div class="open-copy">
+    <p class="kicker"><span data-en="Bakery-café · your address">Пекарня-кав'ярня · Ваша адреса</span> · <b data-en="open since 2019">працюємо з 2019</b></p>
+    <h1 class="big" data-en-html="Bread is gone by <em>seven</em>. Come earlier.">Хліб вичерпують о <em>сьомій</em>. Приходьте раніше.</h1>
+    <p class="lede" data-en="We roast our own beans in the cellar, pull the first espresso at 8:02, and take the last loaves out of the oven at half past six in the evening.">Ми самі обсмажуємо зерно в підвалі, перше еспресо даємо о 8:02, а останні буханки дістаємо з печі о пів на восьму ввечері.</p>
+    <div class="acts">
+      <a class="btn solid" href="#menu" data-en="See the menu">Дивитись меню</a>
+      <a class="btn" href="#room" data-en="Photos of the room">Фото зали</a>
+    </div>
+    <dl class="facts">
+      <div><dt data-en="Mon–Thu">Понеділок–четвер</dt><dd>08:00 — 21:00</dd></div>
+      <div><dt data-en="Fri–Sat">П'ятниця–субота</dt><dd>08:00 — 23:00</dd></div>
+      <div><dt data-en="Sunday">Неділя</dt><dd>09:00 — 20:00</dd></div>
+      <div><dt data-en="Kitchen until">Кухня до</dt><dd>20:30</dd></div>
+    </dl>
+  </div>
+  <figure class="open-photo">
+    <img src="img/zala.jpg" alt="Зал кав'ярні: темне дерево, столи та підвісні лампи" width="1400" height="1050">
+    <figcaption data-en="The main room, 34 seats. Tuesday, 9 a.m.">Основний зал, 34 місця. Вівторок, дев'ята ранку</figcaption>
+  </figure>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span data-en="We roast our own beans">Зерно обсмажуємо самі</span><span data-en="Bread out at 8:00">Хліб о 8:00</span><span data-en="Coffee with foam — 42 грн">Кава з пінкою — 42 грн</span><span data-en="Breakfasts until 12:00">Сніданки до 12:00</span><span data-en="High chairs available">Є стільці для дітей</span><span data-en="Dogs welcome">Заходьте з собакою</span><span data-en="Water is free">Вода безкоштовно</span>
+    <span data-en="We roast our own beans">Зерно обсмажуємо самі</span><span data-en="Bread out at 8:00">Хліб о 8:00</span><span data-en="Coffee with foam — 42 грн">Кава з пінкою — 42 грн</span><span data-en="Breakfasts until 12:00">Сніданки до 12:00</span><span data-en="High chairs available">Є стільці для дітей</span><span data-en="Dogs welcome">Заходьте з собакою</span><span data-en="Water is free">Вода безкоштовно</span>
+  </div>
+</div>
+
+<main>
+<section id="board" class="wrap">
+  <div class="shead">
+    <span class="num">01</span>
+    <h2 data-en="On the board today">Сьогодні на дошці</h2>
+    <p data-en="Written by hand every morning at seven. If it's here, it exists.">Пишемо крейдою щоранку о сьомій. Якщо є на дошці — є насправді.</p>
+  </div>
+  <div class="board">
+    <ul>
+      <li>
+        <h3 data-en="Rye on sourdough">Житній на заквасці</h3>
+        <span class="p">68 грн</span>
+        <p class="why" data-en="Four loaves left. The last one usually goes before nine.">Залишилось 4 буханки. Останню забирають до дев'ятої.</p>
+      </li>
+      <li>
+        <h3 data-en="Cinnamon bun">Булочка з корицею</h3>
+        <span class="p">48 грн</span>
+        <p class="why" data-en="Out of the oven at 7:40. Still warm when you read this.">Вийшла з печі о 7:40. Ще тепла, поки ви це читаєте.</p>
+      </li>
+      <li>
+        <h3 data-en="Syrniki with blueberries">Сирники з чорницею</h3>
+        <span class="p">118 грн</span>
+        <p class="why" data-en="Served until 12:00 only — the kitchen resets after that.">До 12:00, далі кухня переставляється на вечір.</p>
+      </li>
+      <li>
+        <h3 data-en="Filter coffee, Ethiopia">Фільтр, Ефіопія</h3>
+        <span class="p">38 грн</span>
+        <p class="why" data-en="Today's bean: Yirgacheffe, washed. Notes of plum and cocoa.">Сьогоднішнє зерно: Іргачефф, мита обробка. Чорнослив і какао.</p>
+      </li>
+    </ul>
+    <p class="board-note" data-en="The board is photographed and posted on Instagram every day at 07:15.">Фото дошки викладаємо в Instagram щодня о 07:15.</p>
+  </div>
+</section>
+
+<section id="menu" class="wrap">
+  <div class="shead">
+    <span class="num">02</span>
+    <h2 data-en="Menu">Меню</h2>
+    <p data-en="Prices include everything. Milk alternatives cost nothing extra.">Ціни остаточні. Рослинне молоко — без доплати.</p>
+  </div>
+  <div class="menu-grid">
+    <nav class="rail" aria-label="Розділи меню">
+      <ul>
+        <li><a href="#m-coffee" data-en="Coffee">Кава</a></li>
+        <li><a href="#m-breakfast" data-en="Breakfasts">Сніданки</a></li>
+        <li><a href="#m-bread" data-en="Bread">Хліб</a></li>
+        <li><a href="#m-bakery" data-en="Bakery">Випічка</a></li>
+        <li><a href="#m-dessert" data-en="Desserts">Десерти</a></li>
+        <li><a href="#m-other" data-en="Other drinks">Інше</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <div class="course" id="m-coffee">
+        <h3 data-en="Coffee">Кава</h3>
+        <p class="sub" data-en="One blend for milk drinks, a single origin for filter. Roasted on Tuesdays.">Одна суміш для молочних, один сорт для фільтра. Обсмажуємо вівторками.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Espresso">Еспресо</span><i class="dot"></i><span class="pr">32 грн</span></div><p class="ds" data-en="Nine grams, double shot. Served with a glass of water.">Дев'ять грамів, подвійна порція. Зі склянкою води.</p></li>
+          <li><div class="row"><span class="nm" data-en="Cappuccino">Капучино</span><i class="dot"></i><span class="pr">45 грн</span></div><p class="ds" data-en="280 ml. Foam poured flat, not as a pillow.">280 мл. Піна влита врівень, не «подушкою».</p></li>
+          <li><div class="row"><span class="nm">Flat white</span><i class="dot"></i><span class="pr">48 грн</span></div><p class="ds" data-en="Two shots, thin cream. The honest choice.">Дві порції еспресо, тонкий вершок. Сумлінний вибір.</p></li>
+          <li><div class="row"><span class="nm" data-en="Coffee with foam">Кава з пінкою</span><i class="dot"></i><span class="pr">42 грн</span><span class="tag" data-en="house favourite">улюблене тут</span></div><p class="ds" data-en="Baked milk foam, cinnamon on request. Grandmother's version.">Пінка з топленого молока, кориця за бажанням. Як у бабусі.</p></li>
+          <li><div class="row"><span class="nm" data-en="Raf coffee">Раф</span><i class="dot"></i><span class="pr">52 грн</span></div><p class="ds" data-en="Vanilla, 300 ml, drinks like a dessert.">Ванільний, 300 мл, п'ється як десерт.</p></li>
+          <li><div class="row"><span class="nm" data-en="Filter">Фільтр</span><i class="dot"></i><span class="pr">38 грн</span></div><p class="ds" data-en="Single origin, changed weekly. Second cup half price.">Один сорт, змінюємо щотижня. Друга чашка — половина ціни.</p></li>
+          <li><div class="row"><span class="nm" data-en="Cocoa on house milk">Какао на домашньому молоці</span><i class="dot"></i><span class="pr">55 грн</span></div><p class="ds" data-en="Real chocolate melted to order, not powder.">Топимо справжній шоколад, а не розводимо порошок.</p></li>
+        </ul>
+      </div>
+
+      <div class="course" id="m-breakfast">
+        <h3 data-en="Breakfasts">Сніданки</h3>
+        <p class="sub" data-en="From eight until twelve. Every dish comes with rye bread and butter.">З 8:00 до 12:00. До страви — житній хліб і вершкове масло.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Syrniki with blueberries">Сирники з чорницею</span><i class="dot"></i><span class="pr">118 грн</span></div><p class="ds" data-en="Farm cottage cheese, no semolina. Two pieces, sour cream aside.">Фермерський сир, без манки. Дві штуки, сметана окремо.</p></li>
+          <li><div class="row"><span class="nm" data-en="Omelette with mushrooms">Омлет з печеричками та зеленню</span><i class="dot"></i><span class="pr">124 грн</span></div><p class="ds" data-en="Three eggs, folded in the pan, chives from our own box on the windowsill.">Три яйця, складений на сковорідці, шніт із власного ящика на підвіконні.</p></li>
+          <li><div class="row"><span class="nm" data-en="Porridge with pear">Каша вівсяна з грушею</span><i class="dot"></i><span class="pr">92 грн</span></div><p class="ds" data-en="Slow-cooked, honey and toasted seeds.">Варена повільно, мед і підсмажене насіння.</p></li>
+          <li><div class="row"><span class="nm" data-en="Avocado toast, poached egg">Тост з авокадо та яйцем пашот</span><i class="dot"></i><span class="pr">148 грн</span></div><p class="ds" data-en="Sourdough, chilli flakes, lemon. Ask for less bread if you're not hungry.">На заквасці, чилі, лимон. Якщо не дуже голодні — просіть менше хліба.</p></li>
+          <li><div class="row"><span class="nm" data-en="Shakshuka">Шакшука з бринзою</span><i class="dot"></i><span class="pr">136 грн</span></div><p class="ds" data-en="Seasonal tomatoes, baked in a clay pot, bread for dipping.">Сезонні томати, у глиняному горщику, хліб до неї обов'язково.</p></li>
+          <li><div class="row"><span class="nm" data-en="Yoghurt with seeds">Насіння та йогурт</span><i class="dot"></i><span class="pr">86 грн</span></div><p class="ds" data-en="Homemade yoghurt, pumpkin seeds, a little bit of everything.">Домашній йогурт, гарбузове насіння, зовсім трішки всього.</p></li>
+        </ul>
+      </div>
+
+      <div class="course" id="m-bread">
+        <h3 data-en="Bread">Хліб</h3>
+        <p class="sub" data-en="Baked at 8:00 and again at 17:30. Whole loaves, not sliced.">Печемо о 8:00 і ще раз о 17:30. Цілими буханками, не нарізаємо.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Rye on sourdough">Житній на заквасці</span><i class="dot"></i><span class="pr">68 грн</span></div><p class="ds" data-en="Sour, dense, keeps three days. Levain no. 3, fed since 2019.">Кислий, щільний, лежить три дні. Закваска №3, годуємо з 2019 року.</p></li>
+          <li><div class="row"><span class="nm" data-en="Wheat with seeds">Пшеничний з насінням</span><i class="dot"></i><span class="pr">72 грн</span></div><p class="ds" data-en="Sunflower and flax, thin crackly crust.">Соняшник і льон, скоринка тонка й тріщить.</p></li>
+          <li><div class="row"><span class="nm" data-en="Baguette">Батон</span><i class="dot"></i><span class="pr">45 грн</span></div><p class="ds" data-en="Straight dough, 400 g. Best within two hours.">Пряме тісто, 400 грамів. Найкращий упродовж двох годин.</p></li>
+          <li><div class="row"><span class="nm" data-en="Bread with walnut">Хліб з волоським горіхом</span><i class="dot"></i><span class="pr">88 грн</span></div><p class="ds" data-en="With dried plum. Goes with cheese better than any wine.">Із чорносливом. До сиру ліпше, ніж будь-яке вино.</p></li>
+          <li><div class="row"><span class="nm" data-en="Focaccia with rosemary">Фокачча з розмарином</span><i class="dot"></i><span class="pr">76 грн</span></div><p class="ds" data-en="Olive oil, coarse salt, cut by the piece.">Оливкова олія, велика сіль, ріжемо шматками.</p></li>
+        </ul>
+      </div>
+
+      <div class="course" id="m-bakery">
+        <h3 data-en="Bakery">Випічка</h3>
+        <p class="sub" data-en="Two batches a day — morning and late afternoon.">Дві партії на день — ранкова і вечірня.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Poppy seed roll">Рогалик з маком</span><i class="dot"></i><span class="pr">42 грн</span></div><p class="ds" data-en="Poppy ground the same day, otherwise it dries out.">Мак мелимо того ж дня, інакше гірчить.</p></li>
+          <li><div class="row"><span class="nm" data-en="Cinnamon bun">Булочка з корицею</span><i class="dot"></i><span class="pr">48 грн</span></div><p class="ds" data-en="Ceylon cinnamon, cardamom in the dough.">Цейлонська кориця, кардамон у тісті.</p></li>
+          <li><div class="row"><span class="nm" data-en="Butter croissant">Круасан вершковий</span><i class="dot"></i><span class="pr">52 грн</span></div><p class="ds" data-en="Eighteen folds. Crumbs on the plate are normal.">Вісімнадцять складок. Крихти на тарілці — це нормально.</p></li>
+          <li><div class="row"><span class="nm" data-en="Lemon-poppy muffin">Мафін лимон-мак</span><i class="dot"></i><span class="pr">44 грн</span></div><p class="ds" data-en="Zest from unpeeled lemons, glaze on top only.">Цедра з нечищених лимонів, глазур лише зверху.</p></li>
+          <li><div class="row"><span class="nm" data-en="Cherry cheesecake">Сирник вишневий</span><i class="dot"></i><span class="pr">56 грн</span></div><p class="ds" data-en="Baked in a water bath, cold when served.">Печемо на водяній бані, подаємо холодним.</p></li>
+        </ul>
+      </div>
+
+      <div class="course" id="m-dessert">
+        <h3 data-en="Desserts">Десерти</h3>
+        <p class="sub" data-en="From the counter fridge, two steps to the right of the till.">З холодильної вітрини, два кроки праворуч від каси.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Tiramisu">Тірамісу</span><i class="dot"></i><span class="pr">98 грн</span></div><p class="ds" data-en="Made in the morning, soaked biscuits, no liqueur.">Готуємо вранці, печиво просочене, без лікеру.</p></li>
+          <li><div class="row"><span class="nm" data-en="Carrot cake">Морквяний</span><i class="dot"></i><span class="pr">92 грн</span></div><p class="ds" data-en="Walnut, orange, cream cheese frosting.">Горіх, апельсин, крем-сир зверху.</p></li>
+          <li><div class="row"><span class="nm" data-en="Napoleon">Наполеон</span><i class="dot"></i><span class="pr">88 грн</span></div><p class="ds" data-en="Twelve layers, rests overnight. A piece is enough.">Дванадцять коржів, ночує в холодильнику. Одного шматка вистачить.</p></li>
+          <li><div class="row"><span class="nm" data-en="Honey cake">Медівник</span><i class="dot"></i><span class="pr">58 грн</span></div><p class="ds" data-en="Buckwheat honey from a hive outside town.">Гречаний мед з пасіки за містом.</p></li>
+        </ul>
+      </div>
+
+      <div class="course" id="m-other">
+        <h3 data-en="Other drinks">Інше</h3>
+        <p class="sub" data-en="For whoever doesn't drink coffee. There's always hot water and mint.">Для тих, хто не п'є каву. Окріп і м'ята — завжди є.</p>
+        <ul class="dishes">
+          <li><div class="row"><span class="nm" data-en="Matcha">Матча</span><i class="dot"></i><span class="pr">60 грн</span></div><p class="ds" data-en="Ceremonial grade, whisked by hand, milk optional.">Церемоніальний ґатунок, збиваємо вінчиком, молоко — як попросите.</p></li>
+          <li><div class="row"><span class="nm" data-en="Sea buckthorn with ginger">Облепіха з імбиром</span><i class="dot"></i><span class="pr">58 грн</span></div><p class="ds" data-en="Autumn and winter only. Frozen berries from September.">Тільки восени та узимку. Ягоди морозимо ще у вересні.</p></li>
+          <li><div class="row"><span class="nm" data-en="Chicory">Цикорій</span><i class="dot"></i><span class="pr">40 грн</span></div><p class="ds" data-en="For those who gave up coffee and still want the ritual.">Тим, хто кинув каву, але ритуал хоче залишити.</p></li>
+          <li><div class="row"><span class="nm" data-en="House lemonade">Домашній лимонад</span><i class="dot"></i><span class="pr">52 грн</span></div><p class="ds" data-en="Mint and tarragon, not too sweet on purpose.">М'ята і тархун, навмисне не дуже солодкий.</p></li>
+          <li><div class="row"><span class="nm" data-en="Still water">Негазована вода</span><i class="dot"></i><span class="pr" data-en="free">безкоштовно</span></div><p class="ds" data-en="Filtered, served in a carafe. Ask and we refill.">Фільтрована, у графіні. Попросіть — доллємо.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="room" class="wrap">
+  <div class="shead">
+    <span class="num">03</span>
+    <h2 data-en="The room and the kitchen">Зала і кухня</h2>
+    <p data-en="Nothing staged. Photographed on ordinary weekdays, by the staff.">Нічого не поставлено. Знято у звичайні будні, нашими ж людьми.</p>
+  </div>
+  <div class="grid">
+    <figure class="g-a"><img src="img/stoyka.jpg" alt="Дерев'яна стойка з ліхтарями та дошкою меню" loading="lazy" width="1400" height="875"><figcaption data-en="The counter. Wait here for your order and take bread from the basket.">Стойка. Тут чекають на замовлення й беруть хліб із кошика.</figcaption></figure>
+    <figure class="g-b"><img src="img/khlib.jpg" alt="Три буханки житнього хліба з колоссям" loading="lazy" width="1400" height="1750"><figcaption data-en="Sourdough no. 3. Fed every morning at six.">Закваска №3. Годуємо щоранку о шостій.</figcaption></figure>
+    <figure class="g-c"><img src="img/rohalyky.jpg" alt="Рогалики, на які зверху сиплеться борошно" loading="lazy" width="1400" height="1400"><figcaption data-en="Poppy rolls, second batch, 17:40.">Рогалики з маком, друга партія, 17:40.</figcaption></figure>
+    <figure class="g-d"><img src="img/chashky.jpg" alt="Три чашки кави з латте-артом у руках" loading="lazy" width="1400" height="875"><figcaption data-en="Oksana, Andriy and the morning regulars. Three cappuccinos at once.">Оксана, Андрій і сталі ранкові гости. Три капучино водночас.</figcaption></figure>
+    <figure class="g-e"><img src="img/kavy.jpg" alt="Кілька чашок кави на круглому дерев'яному столі згори" loading="lazy" width="1400" height="933"><figcaption data-en="Cupping every new lot. Staff votes, the losing bean never arrives.">Каппінг кожного нового лоту. Голосує вся зміна, програшне зерно не їде до нас.</figcaption></figure>
+    <figure class="g-f"><img src="img/vechir.jpg" alt="Вечірній стіл із стравами, склянками та свічкою" loading="lazy" width="1400" height="933"><figcaption data-en="Nine in the evening. Candles come from our own storage room.">Дев'ята вечора. Свічки приносимо з власного комору.</figcaption></figure>
+    <figure class="g-g"><img src="img/zala.jpg" alt="Панорама залу з темними стінами та столами" loading="lazy" width="1400" height="600"><figcaption data-en="Thirty-four seats inside, eleven on the terrace from May.">Всередині тридцять чотири місця, від травня ще одинадцять на терасі.</figcaption></figure>
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <div class="shead">
+    <span class="num">04</span>
+    <h2 data-en="About the place">Про це місце</h2>
+    <p data-en="Four people, one oven, and a cellar that smells of coffee all year.">Чотири людини, одна піч і підвал, що пахне кавою цілий рік.</p>
+  </div>
+  <div class="about">
+    <div class="col">
+      <p data-en="It started with one oven borrowed from a friend's bakery two blocks away. We baked forty loaves on Sundays and sold them out by noon, and by the second month it was clear that bread alone would not pay the rent. Coffee was the obvious addition: whoever buys warm bread at eight in the morning also wants something to wash it down with.">Почалося з однієї печі, позиченої в друга за два квартали. Пекли сорок буханок на неділю й розбирали до обіду, а другого місяця стало ясно: самим хлібом оренду не закрити. Кава була очевидним продовженням — хто купує теплий хліб о восьмій, той хоче чимось його запити.</p>
+      <p data-en="The roaster came later and turned out to be the best decision we made. A twelve-kilo bag lasts us three days, which means the beans on your table were green less than a week ago. It also means we know instantly when a lot is wrong, because we are the ones who roasted it.">Обсмажувач з'явився пізніше і виявився найкращим нашим рішенням. Мішок на дванадцять кілограмів іде за три дні, тож зерно у вашій чашці було зеленим менше тижня тому. І ми одразу чуємо, коли лот невдалий, — бо смажили його самі.</p>
+      <p data-en="We are not trying to be the busiest place in town. Half the tables are taken by the same six people every morning, and that suits us fine.">Ми не намагаємося бути найлюднішим місцем у центрі. Половину столиків щоранку займають одні й ті самі шестеро — і нас це влаштовує.</p>
+      <blockquote>
+        <p data-en="“If the bread is still warm at four in the afternoon, something went wrong in the morning.”">«Якщо о четвертій пополудні хліб ще теплий — значить, вранці щось пішло не так».</p>
+        <footer data-en="Ihor, baker">Ігор, пекар</footer>
+      </blockquote>
+    </div>
+    <div>
+      <div class="numbers">
+        <div><b>2019</b><span data-en="the year we opened">рік, коли відкрилися</span></div>
+        <div><b data-en="12 kg">12 кг</b><span data-en="roasted every three days">обсмажуємо на три дні</span></div>
+        <div><b>34</b><span data-en="seats inside">місць у залі</span></div>
+        <div><b>07:40</b><span data-en="first tray out of the oven">перший піднос із печі</span></div>
+      </div>
+      <p class="tips" data-en="We hire two extra people for the summer and one baker who prefers night shifts. Write to the number below if that sounds like you.">На літо беремо ще двох людей і одного нічного пекаря. Якщо це про вас — напишіть на номер нижче.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reach" class="wrap">
+  <div class="shead">
+    <span class="num">05</span>
+    <h2 data-en="How to find us">Як нас знайти</h2>
+    <p data-en="Between the pharmacy and the shoe repair. Green door, no sign in the evening.">Між аптекою та взуттєвим ремонтом. Зелені двері, увечері без вивіски.</p>
+  </div>
+  <div class="reach">
+    <dl>
+      <dt data-en="Address">Адреса</dt>
+      <dd data-en="Your address">Ваша адреса</dd>
+      <dt data-en="Phone">Телефон</dt>
+      <dd>+0 000 000</dd>
+      <dt data-en="Also on Viber">Ще є Viber</dt>
+      <dd>+0 000 000</dd>
+      <dt data-en="Instagram">Instagram</dt>
+      <dd data-en="Your account">Ваш акаунт</dd>
+      <dt data-en="Delivery">Передзамовлення</dt>
+      <dd data-en="Call before 17:00 and the bread will be set aside for you.">Подзвоніть до 17:00 — хліб відкладемо в бік.</dd>
+    </dl>
+    <div>
+      <p class="status" id="status"><i></i><span data-en="checking…">перевіряємо…</span></p>
+      <ul class="hours" id="hours">
+        <li data-days="1,2,3,4"><b data-en="Monday — Thursday">Понеділок — четвер</b><span>08:00 — 21:00</span></li>
+        <li data-days="5,6"><b data-en="Friday — Saturday">П'ятниця — субота</b><span>08:00 — 23:00</span></li>
+        <li data-days="0"><b data-en="Sunday">Неділя</b><span>09:00 — 20:00</span></li>
+      </ul>
+      <p class="tips" data-en="Kitchen stops taking orders thirty minutes before closing. On market days the terrace fills up by ten — the inside tables free up around two.">Кухня приймає замовлення за півгодини до закриття. Базарного дня терасу заповнюють до десятої — столики всередині звільняються близько другої.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap fgrid">
+    <p class="fmark">Кава <span>і</span> Хліб</p>
+    <p class="fine" data-en="Demonstration project. The name, photographs, prices and reviews are an example and do not belong to a real establishment.">Демонстраційний проєкт для портфоліо. Назва, фото, ціни та години роботи — приклад, а не реальний заклад.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var html=document.documentElement;
+  var btns=[].slice.call(document.querySelectorAll("[data-lang]"));
+  var themeBtns=[].slice.call(document.querySelectorAll("[data-theme-btn]"));
+  var nodes=[].slice.call(document.querySelectorAll("[data-en],[data-en-html]"));
+  nodes.forEach(function(el){ el.setAttribute("data-uk", el.innerHTML); });
+
+  function apply(lang){
+    nodes.forEach(function(el){
+      var key = lang==="en" ? (el.hasAttribute("data-en-html") ? "data-en-html" : "data-en") : "data-uk";
+      var val = el.getAttribute(key);
+      if (val===null) return;
+      if (val.indexOf("<")!==-1) el.innerHTML = val;
+      else el.textContent = val;
+    });
+    html.lang = lang;
+    document.title = lang==="en"
+      ? "Kava & Khlib — a bakery-café (portfolio template)"
+      : "Кава і Хліб — пекарня-кав'ярня · шаблон для портфоліо";
+    btns.forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.lang===lang)); });
+    themeBtns.forEach(function(b){
+      var l = b.dataset.themeBtn==="light"
+        ? (lang==="en" ? "Light theme" : "Світла тема")
+        : (lang==="en" ? "Dark theme" : "Темна тема");
+      b.setAttribute("aria-label", l); b.title = l;
+    });
+    try{ localStorage.setItem("khl-lang", lang); }catch(e){}
+    renderHours();
+  }
+
+  btns.forEach(function(b){ b.addEventListener("click", function(){ apply(b.dataset.lang); }); });
+
+  /* light / dark */
+  function setTheme(next,save){
+    html.setAttribute("data-theme",next);
+    themeBtns.forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.themeBtn===next)); });
+    var mc=document.querySelector('meta[name="theme-color"]');
+    if(mc) mc.setAttribute("content", next==="dark" ? "#12100C" : "#EDE4D3");
+    if(save!==false){ try{ localStorage.setItem("khl-theme",next); }catch(e){} }
+  }
+  themeBtns.forEach(function(b){ b.addEventListener("click", function(){ setTheme(b.dataset.themeBtn); }); });
+  setTheme(html.getAttribute("data-theme")==="light" ? "light" : "dark", false);
+
+  /* mobile nav */
+  var burger=document.querySelector(".burger"), navlist=document.getElementById("navlist");
+  function setNav(open){
+    if(!burger||!navlist) return;
+    navlist.setAttribute("data-open", String(open));
+    burger.setAttribute("aria-expanded", String(open));
+  }
+  if(burger){
+    burger.addEventListener("click", function(){ setNav(navlist.getAttribute("data-open")!=="true"); });
+    navlist.addEventListener("click", function(e){ if(e.target.tagName==="A") setNav(false); });
+    document.addEventListener("click", function(e){ if(!e.target.closest("nav.main")) setNav(false); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") setNav(false); });
+    window.addEventListener("resize", function(){ if(window.innerWidth>860) setNav(false); });
+  }
+
+  var saved="uk";
+  try{ saved = localStorage.getItem("khl-lang") || "uk"; }catch(e){}
+
+  /* opening hours + live status */
+  var schedule={0:[9*60,20*60],1:[8*60,21*60],2:[8*60,21*60],3:[8*60,21*60],4:[8*60,21*60],5:[8*60,23*60],6:[8*60,23*60]};
+  function pad(n){ return (n<10?"0":"")+n; }
+  function hhmm(m){ return pad(Math.floor(m/60))+":"+pad(m%60); }
+  function renderHours(){
+    var now=new Date(), mins=now.getHours()*60+now.getMinutes(), day=now.getDay();
+    [].forEach.call(document.querySelectorAll("#hours li"), function(li){
+      li.classList.toggle("now", li.getAttribute("data-days").split(",").indexOf(String(day))!==-1);
+    });
+    var box=document.getElementById("status"); if(!box) return;
+    var t=schedule[day], lang=html.lang;
+    var label=box.querySelector("span"), open = mins>=t[0] && mins<t[1];
+    if(open){
+      label.textContent = lang==="en" ? "Open now · until "+hhmm(t[1]) : "Зараз відчинено · до "+hhmm(t[1]);
+    } else if(mins<t[0]){
+      label.textContent = lang==="en" ? "Opens today at "+hhmm(t[0]) : "Сьогодні відкриємо о "+hhmm(t[0]);
+    } else {
+      var n=schedule[(day+1)%7];
+      label.textContent = lang==="en" ? "Closed · opens tomorrow at "+hhmm(n[0]) : "Зачинено · завтра з "+hhmm(n[0]);
+    }
+    box.classList.toggle("on", open);
+    box.classList.toggle("off", !open);
+  }
+  renderHours();
+  setInterval(renderHours, 60000);
+
+  /* menu rail: mark the section you are reading */
+  var links=[].slice.call(document.querySelectorAll(".rail a"));
+  var courses=links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  function mark(){
+    var best=0, bestTop=-Infinity, y=window.scrollY+140;
+    courses.forEach(function(c,i){ if(!c) return; var top=c.getBoundingClientRect().top+window.scrollY;
+      if(top<=y && top>bestTop){ bestTop=top; best=i; } });
+    links.forEach(function(a,i){ a.setAttribute("aria-current", String(i===best)); });
+  }
+  window.addEventListener("scroll", mark, {passive:true});
+  window.addEventListener("resize", mark);
+  mark();
+
+  apply(saved==="en"?"en":"uk");
+})();
+</script>
+</body>
+</html>
